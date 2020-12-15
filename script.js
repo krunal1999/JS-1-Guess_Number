@@ -1,5 +1,5 @@
 'use strict';
-const secnumber = Math.trunc(Math.random() * 25) + 1; //calculating secreat number;
+let secnumber = Math.trunc(Math.random() * 25) + 1; //calculating secreat number;
 let score = 20;
 //document.querySelector('.number').textContent = secnumber; // displaying secreat number on window
 
@@ -22,15 +22,29 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.message').textContent = ' Higher Number';
       score--;
       document.querySelector('.score').textContent = score;
+      document.querySelector('.guess').value = ' ';
       //   document.querySelector('.number').style.backgroundColor = '#ff0000';
     } //if lower
     else if (guess < secnumber) {
       document.querySelector('.message').textContent = ' Lower Number';
       score--;
       document.querySelector('.score').textContent = score;
+      document.querySelector('.guess').value = ' ';
       //   document.querySelector('.number').style.backgroundColor = '#ff0000';
     }
   } else {
     document.querySelector('.message').textContent = ' You lost the game';
+    document.querySelector('.guess').value = ' ';
   }
+});
+
+document.querySelector('.again').addEventListener('click', function () {
+  score = 20;
+  secnumber = Math.trunc(Math.random() * 25) + 1;
+  document.querySelector('.score').textContent = score;
+  document.querySelector('body').style.backgroundColor = '#222';
+  document.querySelector('.guess').value = ' ';
+  document.querySelector('.number').textContent = '?';
+  document.querySelector('.number').style.width = '15rem';
+  document.querySelector('.message').textContent = 'Start guessing... ';
 });
