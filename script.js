@@ -1,8 +1,7 @@
 'use strict';
 let secnumber = Math.trunc(Math.random() * 25) + 1; //calculating secreat number;
 let score = 20;
-//document.querySelector('.number').textContent = secnumber; // displaying secreat number on window
-
+let Highscore = 0;
 document.querySelector('.check').addEventListener('click', function () {
   //adding event listener on click button
   const guess = Number(document.querySelector('.guess').value); // value enter by user in input box
@@ -14,23 +13,22 @@ document.querySelector('.check').addEventListener('click', function () {
     else if (guess === secnumber) {
       document.querySelector('.message').textContent = ' Correct number ';
       document.querySelector('.number').textContent = secnumber; // displaying secreat number on window
-
       document.querySelector('body').style.backgroundColor = '#60b347';
       document.querySelector('.number').style.width = '20rem';
+      Highscore = Math.max(Highscore, score);
+      document.querySelector('.highscore').textContent = Highscore;
     } //if greater
     else if (guess > secnumber) {
       document.querySelector('.message').textContent = ' Higher Number';
       score--;
       document.querySelector('.score').textContent = score;
       document.querySelector('.guess').value = ' ';
-      //   document.querySelector('.number').style.backgroundColor = '#ff0000';
     } //if lower
     else if (guess < secnumber) {
       document.querySelector('.message').textContent = ' Lower Number';
       score--;
       document.querySelector('.score').textContent = score;
       document.querySelector('.guess').value = ' ';
-      //   document.querySelector('.number').style.backgroundColor = '#ff0000';
     }
   } else {
     document.querySelector('.message').textContent = ' You lost the game';
