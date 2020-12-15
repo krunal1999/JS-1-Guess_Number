@@ -17,15 +17,10 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.number').style.width = '20rem';
       Highscore = Math.max(Highscore, score);
       document.querySelector('.highscore').textContent = Highscore;
-    } //if greater
-    else if (guess > secnumber) {
-      document.querySelector('.message').textContent = ' Higher Number';
-      score--;
-      document.querySelector('.score').textContent = score;
-      document.querySelector('.guess').value = ' ';
-    } //if lower
-    else if (guess < secnumber) {
-      document.querySelector('.message').textContent = ' Lower Number';
+    } //if not equal
+    else if (guess !== secnumber) {
+      document.querySelector('.message').textContent =
+        guess > secnumber ? ' Higher Number' : 'Lower Number';
       score--;
       document.querySelector('.score').textContent = score;
       document.querySelector('.guess').value = ' ';
